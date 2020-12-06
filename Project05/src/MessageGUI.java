@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
+import java.awt.BorderLayout;
 
 public class MessageGUI extends JFrame {
     JFrame frame;
