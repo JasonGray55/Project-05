@@ -90,7 +90,7 @@ public class Login extends  JFrame {
         newUsername = new JTextField(15);
         newPassword = new JTextField(15);
         age = new JTextField(15);
-        String[] genders = {"Male", "Female", "Deline to State"};
+        String[] genders = {"Male", "Female", "Decline to State"};
         gender = new JComboBox<String>(genders);
         usersFirstName = new JTextField(15);
         usersLastName = new JTextField(15);

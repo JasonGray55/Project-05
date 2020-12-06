@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class MessageServer extends Thread{
+public class MessageServer extends Thread {
 
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(4242);
