@@ -13,15 +13,15 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
-public class ChatClient {
+public class ChatClient extends JFrame {
 
-    String serverAddress;
-    Scanner in;
-    PrintWriter out;
-    JFrame frame = new JFrame("Chatter");
-    JTextField textField = new JTextField(50);
-    JTextArea messageArea = new JTextArea(16, 50);
-    User user;
+    private String serverAddress;
+    private Scanner in;
+    private PrintWriter out;
+    private JFrame frame = new JFrame("Chatter");
+    private JTextField textField = new JTextField(50);
+    private JTextArea messageArea = new JTextArea(16, 50);
+    private User user;
 
     public ChatClient(User user) {
         this.serverAddress = "localhost";
@@ -54,7 +54,7 @@ public class ChatClient {
 //        }
     }
 
-    private String getName() {
+    public String getName() {
         return user.getUsername();
     }
 

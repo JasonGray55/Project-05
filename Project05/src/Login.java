@@ -8,31 +8,31 @@ import java.util.HashMap;
 
 public class Login extends  JFrame {
     ArrayList<User> users;
-    JFrame frame;
-    JButton loginButton;
-    JPanel loginPanel;
-    JTextField user;
-    JTextField pass;
-    JLabel username;
-    JLabel password;
-    JButton newUser;
+    private JFrame frame;
+    private JButton loginButton;
+    private JPanel loginPanel;
+    private JTextField user;
+    private JTextField pass;
+    private JLabel username;
+    private JLabel password;
+    private JButton newUser;
 
-    JPanel newUserPanel;
-    JTextField newUsername;
-    JTextField newPassword;
-    JTextField age;
-    JComboBox<String> gender;
-    JTextField usersFirstName;
-    JTextField usersLastName;
-    JLabel usernameLabel;
-    JLabel passwordLabel;
-    JLabel ageLabel;
-    JLabel genderLabel;
-    JLabel firstNameLabel;
-    JLabel lastNameLabel;
-    JButton addUser;
-    JButton goBack;
-    HashMap<String, String> usernamesPasswords;
+    private JPanel newUserPanel;
+    private JTextField newUsername;
+    private JTextField newPassword;
+    private JTextField age;
+    private JComboBox<String> gender;
+    private JTextField usersFirstName;
+    private JTextField usersLastName;
+    private JLabel usernameLabel;
+    private JLabel passwordLabel;
+    private JLabel ageLabel;
+    private JLabel genderLabel;
+    private JLabel firstNameLabel;
+    private JLabel lastNameLabel;
+    private JButton addUser;
+    private JButton goBack;
+    private HashMap<String, String> usernamesPasswords;
 
 
 
@@ -156,8 +156,8 @@ public class Login extends  JFrame {
                         user.requestFocus();
                     } else {
                         if (users.get(userIndex).getPassword().equals(ppaswd)) {
-                            frame.setVisible(false);
                             new ChatClient(users.get(userIndex));
+                            frame.dispose();
                             ChatServer.loginDone++;
                         } else {
                             JOptionPane.showMessageDialog(null, "Wrong Password");
@@ -202,8 +202,7 @@ public class Login extends  JFrame {
                             User newUser = new User(name, username, password, ageOfUser, genderOfUser);
                             users.add(newUser);
                             storeUsernamePassword(newUser);
-                            frame.setVisible(false);
-                            loginPanel.setVisible(false);
+                            frame.dispose();
                             new ChatClient(newUser);
                             ChatServer.loginDone++;
                         }
@@ -231,7 +230,7 @@ public class Login extends  JFrame {
 
     public void storeUsernamePassword(User newUser) {
         try{
-            File file = new File("Project05/userPass.txt");
+            File file = new File("userPass.txt");
             FileWriter filewrite = new FileWriter(file, true);
             PrintWriter pw = new PrintWriter(filewrite);
             pw.println();

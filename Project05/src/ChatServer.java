@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.concurrent.Executors;
 
-public class ChatServer {
+public class ChatServer extends Thread {
     public static int loginDone = 0;
     private static Set<String> names = new HashSet<>();
 
