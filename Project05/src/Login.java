@@ -157,6 +157,7 @@ public class Login extends  JFrame {
                         user.requestFocus();
                     } else {
                         if (users.get(userIndex).getPassword().equals(ppaswd)) {
+                            ChatServer.loginDone++;
                             new ChatClient(users.get(userIndex));
                             frame.setVisible(false);
                         } else {
@@ -202,6 +203,7 @@ public class Login extends  JFrame {
                             User newUser = new User(name, username, password, ageOfUser, genderOfUser);
                             users.add(newUser);
                             storeUsernamePassword(newUser);
+                            ChatServer.loginDone++;
                             new ChatClient(newUser);
                             frame.setVisible(false);
                         }

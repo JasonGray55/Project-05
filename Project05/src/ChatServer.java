@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.concurrent.Executors;
 
 public class ChatServer {
-
+    public static int loginDone = 0;
     private static Set<String> names = new HashSet<>();
 
     private static Set<PrintWriter> writers = new HashSet<>();
@@ -16,8 +16,10 @@ public class ChatServer {
     public static void main(String[] args) throws Exception {
         System.out.println("The chat server is running...");
         var pool = Executors.newFixedThreadPool(500);
-        try (var listener = new ServerSocket(59001)) {
-            pool.execute(new Handler(listener.accept()));
+        while (true) {
+            try (var listener = new ServerSocket(59001)) {
+                pool.execute(new Handler(listener.accept()));
+            }
         }
 
     }
@@ -33,60 +35,52 @@ public class ChatServer {
         }
 
         public void run() {
+            loginDone = 0;
             new Login();
-//            try {
-//                in = new Scanner(socket.getInputStream());
-//                out = new PrintWriter(socket.getOutputStream(), true);
-//
-//
-//                while (true) {
-//                    out.println("SUBMITNAME");
-//                    name = in.nextLine();
-//                    if (name == null) {
-//                        return;
-//                    }
-//                    synchronized (names) {
-//                        if (!name.isBlank() && !names.contains(name)) {
-//                            names.add(name);
-//                            break;
-//                        }
-//                    }
-//                }
-//
-//                out.println("NAMEACCEPTED " + name);
-//                for (PrintWriter writer : writers) {
-//                    writer.println("MESSAGE " + name + " has joined");
-//                }
-//                writers.add(out);
-//
-//                while (true) {
-//                    String input = in.nextLine();
-//                    if (input.toLowerCase().startsWith("/quit")) {
-//                        return;
-//                    }
-//                    for (PrintWriter writer : writers) {
-//                        writer.println("MESSAGE " + name + ": " + input);
-//                    }
-//                }
-//            } catch (Exception e) {
-//                System.out.println(e);
-//            } finally {
-//                if (out != null) {
-//                    writers.remove(out);
-//                }
-//                if (name != null) {
-//                    System.out.println(name + " is leaving");
-//                    names.remove(name);
-//                    for (PrintWriter writer : writers) {
-//                        writer.println("MESSAGE " + name + " has left");
-//                    }
-//                }
-//                try {
-//                    socket.close();
-//                } catch (IOException e) {
-//                }
-//            }
+            if (loginDone > 0) {
+                try {
+                    in = new Scanner(socket.getInputStream());
+                    out = new PrintWriter(socket.getOutputStream(), true);
+
+
+                    name = in.nextLine();
+
+                    out.println("NAMEACCEPTED " + name);
+                    for (PrintWriter writer : writers) {
+                        writer.println("MESSAGE " + name + " has joined");
+                    }
+                    writers.add(out);
+
+                    while (true) {
+                        String input = in.nextLine();
+                        if (input.toLowerCase().startsWith("/quit")) {
+                            return;
+                        }
+                        for (PrintWriter writer : writers) {
+                            writer.println("MESSAGE " + name + ": " + input);
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
+                } finally {
+                    if (out != null) {
+                        writers.remove(out);
+                    }
+                    if (name != null) {
+                        System.out.println(name + " is leaving");
+                        names.remove(name);
+                        for (PrintWriter writer : writers) {
+                            writer.println("MESSAGE " + name + " has left");
+                        }
+                    }
+                    try {
+                        socket.close();
+                    } catch (IOException e) {
+                    }
+                }
+            }
         }
+
 
     }
     public static ArrayList<User> getUsers() {

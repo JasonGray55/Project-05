@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
-
+import java.io.ObjectOutputStream;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -40,15 +40,18 @@ public class ChatClient {
             }
         });
         try {
-            var socket = new Socket(serverAddress, 59001);
+            Socket socket = new Socket("localhost", 59001);
             in = new Scanner(socket.getInputStream());
             out = new PrintWriter(socket.getOutputStream(), true);
+
+            out.println(user.getUsername());
         } catch (IOException e) {
             frame.setVisible(false);
-        } finally {
-            frame.setVisible(false);
-            frame.dispose();
         }
+//        } finally {
+//            frame.setVisible(false);
+//            frame.dispose();
+//        }
     }
 
     private String getName() {
