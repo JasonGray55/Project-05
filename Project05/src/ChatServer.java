@@ -86,7 +86,7 @@ public class ChatServer {
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<>();
         try {
-            File file = new File("userPass.txt");
+            File file = new File("Project05/userPass.txt");
             FileReader fr = new FileReader(file);
             BufferedReader bfr = new BufferedReader(fr);
             String usernamePasswordData = bfr.readLine();

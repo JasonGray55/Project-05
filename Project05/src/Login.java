@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -157,9 +156,9 @@ public class Login extends  JFrame {
                         user.requestFocus();
                     } else {
                         if (users.get(userIndex).getPassword().equals(ppaswd)) {
-                            ChatServer.loginDone++;
-                            new ChatClient(users.get(userIndex));
                             frame.setVisible(false);
+                            new ChatClient(users.get(userIndex));
+                            ChatServer.loginDone++;
                         } else {
                             JOptionPane.showMessageDialog(null, "Wrong Password");
                             user.setText("");
@@ -203,9 +202,10 @@ public class Login extends  JFrame {
                             User newUser = new User(name, username, password, ageOfUser, genderOfUser);
                             users.add(newUser);
                             storeUsernamePassword(newUser);
-                            ChatServer.loginDone++;
-                            new ChatClient(newUser);
                             frame.setVisible(false);
+                            loginPanel.setVisible(false);
+                            new ChatClient(newUser);
+                            ChatServer.loginDone++;
                         }
                     }
                 });
@@ -231,7 +231,7 @@ public class Login extends  JFrame {
 
     public void storeUsernamePassword(User newUser) {
         try{
-            File file = new File("userPass.txt");
+            File file = new File("Project05/userPass.txt");
             FileWriter filewrite = new FileWriter(file, true);
             PrintWriter pw = new PrintWriter(filewrite);
             pw.println();

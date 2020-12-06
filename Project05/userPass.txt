@@ -1,8 +1,0 @@
-billy_wright,billypass,billy wright,12,Male
-bobby_man,bobbypass,bobby man,120,Decline to State
-sophia_person,sophiapass,sophia person,40,Female
-jane_doe,janepass,Jane Doe,19,Female
-purdue.pete,peter,Purdue Pete,100,Deline to State
-bestpersonever,thegreatest,Best Ever,15,Deline to State
-igorpalant,palant,Igor Palant,46,Male
-boris,palant1,boris palant,111,Male

@@ -23,7 +23,7 @@ public class MessageGUI extends JFrame {
         conversationTextField = new JTextField(15);
         getConversationTextField = new JButton("Find User");
         try {
-            File file = new File("userPass.txt");
+            File file = new File("Project05/userPass.txt");
             FileReader fr = new FileReader(file);
             BufferedReader bfr = new BufferedReader(fr);
             String usernamePasswordData = bfr.readLine();
@@ -86,7 +86,7 @@ public class MessageGUI extends JFrame {
 
     public void storeUsernamePassword(User newUser) {
         try{
-            File file = new File("userPass.txt");
+            File file = new File("Project05/userPass.txt");
             FileWriter filewrite = new FileWriter(file, true);
             PrintWriter pw = new PrintWriter(filewrite);
             pw.println();
