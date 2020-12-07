@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class MessageServer extends Thread {
 
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(4242);
+        ServerSocket serverSocket = new ServerSocket(59001);
         Socket socket = serverSocket.accept();
         new Login();
         // HERE USER HAS CONNECTED SO WE WILL NOW SEND THEM THE LOGIN AND CREATE ACCOUNT GUIS.
