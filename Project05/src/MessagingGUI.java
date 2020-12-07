@@ -12,9 +12,9 @@ public class MessagingGUI extends JFrame implements ActionListener {
     private JFrame frame;
     private static JTextArea textArea;
     private static JButton send;
-    private static JPanel messagePanel;
-    private static JTextField textField;
-    private static JScrollPane scroller;
+    static JPanel messagePanel;
+    static JTextField textField;
+    static JScrollPane scroller;
     DataOutputStream output;
     DataInputStream input;
     Scanner scanner = new Scanner(System.in);
@@ -22,21 +22,23 @@ public class MessagingGUI extends JFrame implements ActionListener {
     public MessagingGUI() {
         frame = new JFrame();
         messagePanel = new JPanel();
+        frame.setContentPane(messagePanel);
         textField = new JTextField(30);
         send = new JButton("Send");
         frame.setTitle("ChatNet");
-        messagePanel.setLayout(new BoxLayout(messagePanel, BoxLayout.Y_AXIS));
+        messagePanel.setLayout(new BoxLayout(frame, BoxLayout.Y_AXIS));
 
-        frame.setVisible(true);
-        frame.setSize(1280, 720);
         textArea = new JTextArea(30, 50);
         textArea.setBackground(Color.white);
-        textArea.setLayout(new BoxLayout(messagePanel, BoxLayout.Y_AXIS));
+        textArea.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
         scroller = new JScrollPane(textArea);
-        getContentPane().add(scroller, BorderLayout.CENTER);
-        frame.add(scroller);
-        frame.add(send);
-        frame.add(textField);
+        frame.getContentPane().add(scroller, BorderLayout.CENTER);
+        messagePanel.add(scroller);
+        messagePanel.add(send);
+        messagePanel.add(textField);
+
+        frame.getContentPane().setVisible(true);
+
         send.addActionListener(this);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }

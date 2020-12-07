@@ -156,7 +156,7 @@ public class Login extends  JFrame {
                         user.requestFocus();
                     } else {
                         if (users.get(userIndex).getPassword().equals(passwordInput)) {
-                            new ChatClient(users.get(userIndex));
+                            new MessageGUI(users.get(userIndex));
                             frame.dispose();
                             ChatServer.loginDone++;
                         } else {
@@ -203,7 +203,7 @@ public class Login extends  JFrame {
                             users.add(newUser);
                             storeUsernamePassword(newUser);
                             frame.dispose();
-                            new ChatClient(newUser);
+                            new MessageGUI(newUser);
                             ChatServer.loginDone++;
                         }
                     }
