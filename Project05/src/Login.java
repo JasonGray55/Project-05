@@ -141,21 +141,21 @@ public class Login extends  JFrame {
         newUserPanel.setVisible(false);
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String puname = user.getText();
-                String ppaswd = pass.getText();
+                String userInput = user.getText();
+                String passwordInput = pass.getText();
 
-                if (puname.equals("") || ppaswd.equals("")) {
+                if (userInput.equals("") || passwordInput.equals("")) {
                     JOptionPane.showMessageDialog(null, "Please insert Username and Password");
                 } else {
 
-                    int userIndex = checkUsername(users, puname);
+                    int userIndex = checkUsername(users, userInput);
                     if (userIndex == -1) {
                         JOptionPane.showMessageDialog(null, "No accounts with that username");
                         user.setText("");
                         pass.setText("");
                         user.requestFocus();
                     } else {
-                        if (users.get(userIndex).getPassword().equals(ppaswd)) {
+                        if (users.get(userIndex).getPassword().equals(passwordInput)) {
                             new ChatClient(users.get(userIndex));
                             frame.dispose();
                             ChatServer.loginDone++;
@@ -214,10 +214,10 @@ public class Login extends  JFrame {
 
     }
 
-    public int checkUsername(ArrayList<User> usernameArray, String puname) {
+    public int checkUsername(ArrayList<User> usernameArray, String userInput) {
         int userIndex = -1;
         for (int i = 0; i < usernameArray.size(); i++) {
-            if (usernameArray.get(i).getUsername().equals(puname)) {
+            if (usernameArray.get(i).getUsername().equals(userInput)) {
                 userIndex = i;
                 break;
             }

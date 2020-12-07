@@ -6,4 +6,4 @@ purdue.pete,peter,Purdue Pete,100,Deline to State
 bestpersonever,thegreatest,Best Ever,15,Deline to State
 igorpalant,palant,Igor Palant,46,Male
 boris,palant1,boris palant,111,Male
-bobobo,apls,bobobo aplsne,20,Decline to State
+vbalan,one2three,Vinny Balan,18,Male

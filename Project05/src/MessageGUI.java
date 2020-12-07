@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -6,14 +7,15 @@ import java.util.ArrayList;
 import java.awt.BorderLayout;
 
 public class MessageGUI extends JFrame {
-    JFrame frame;
-    JPanel messagePanel;
-    JTextField conversationTextField;
-    JButton getConversationTextField;
-    ArrayList<User> users;
+    private JFrame frame;
+    private JPanel messagePanel;
+    private JTextField conversationTextField;
+    private JButton getConversationTextField;
+    private static Border outline;
+    private ArrayList<User> users;
     int counter = 0;
     int yCoordCounter = 60;
-    User currentUser;
+    private User currentUser;
 
     public MessageGUI(User user) {
         super("ChatNet");
@@ -38,9 +40,9 @@ public class MessageGUI extends JFrame {
             d.printStackTrace();
         }
 
-        messagePanel.setSize(300, 200);
-        messagePanel.setLocation(500, 200);
-        messagePanel.setLayout(null);
+        //messagePanel.setSize(300, 200);
+        //messagePanel.setLocation(500, 200);
+        messagePanel.setLayout(new BoxLayout(messagePanel, BoxLayout.Y_AXIS));
         frame.setSize(600, 400);
         conversationTextField.setBounds(90, 30, 150, 20);
         getConversationTextField.setBounds(250, 30, 100, 20);
