@@ -31,7 +31,7 @@ public class MessagingGUI extends JFrame implements ActionListener {
         frame.setSize(1280, 720);
         textArea = new JTextArea(30, 50);
         textArea.setBackground(Color.white);
-        textArea.setLayout(new FlowLayout());
+        textArea.setLayout(new BoxLayout(messagePanel, BoxLayout.Y_AXIS));
         scroller = new JScrollPane(textArea);
         getContentPane().add(scroller, BorderLayout.CENTER);
         frame.add(scroller);
